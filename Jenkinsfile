@@ -26,7 +26,7 @@ pipeline {
         echo '######################'              
         echo 'Deploying ...'          
         echo '######################' 
-        sh 'docker stop continiouintegration'
+        sh 'docker stop'
         sh 'docker run -d -p 8080:5001 continiouintegration'              
         
       }
