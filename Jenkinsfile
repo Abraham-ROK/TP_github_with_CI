@@ -16,7 +16,7 @@ pipeline {
         echo '######################'              
         echo 'Testing...'       
         echo '######################'
-        sh 'python -m unittest'                      
+        sh 'python3 -m unittest'                      
         
       }
     }
