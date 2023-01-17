@@ -3,30 +3,34 @@ pipeline {
     
   stages {
         
-    stage('Cloning Git Repo') {
-      steps {
-        echo '######################'              
-        echo 'Cloning...'       
-        echo '######################' 
-      }
-    }
-    stage('Install dependencies') {
+    stage('Build') {
       steps {
         echo '######################'              
         echo 'Building...'       
-        echo '######################'                      
+        echo '######################' 
+        sh 'docker build -t continiousIntegration .'
+      }
+    }
+    stage('Test') {
+      steps {
+        echo '######################'              
+        echo 'Testing...'       
+        echo '######################'
+        sh 'python -m unittest'                      
         
       }
     }
      
-    stage('Running Tests') {
+    stage('Deploy') {
       steps {
         echo '######################'              
-        echo 'Running tests ...'          
-        echo '######################'               
+        echo 'Deploying ...'          
+        echo '######################' 
+        sh 'docker run continiousIntegration'              
         
       }
-    }      
+    }
+
   }
 
 }
