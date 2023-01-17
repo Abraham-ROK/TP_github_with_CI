@@ -7,7 +7,8 @@ pipeline {
       steps {
         echo '######################'              
         echo 'Building...'       
-        echo '######################' 
+        echo '######################'
+        sh 'docker build -t continiouintegration .'
       }
     }
     stage('Test') {
@@ -25,8 +26,7 @@ pipeline {
         echo '######################'              
         echo 'Deploying ...'          
         echo '######################' 
-        sh 'docker build -t continiouintegration .'
-        sh 'docker run -d -p 5000:5000 continiousintegration'              
+        sh 'docker run -d -p 5000:5000 continiouintegration'              
         
       }
     }
